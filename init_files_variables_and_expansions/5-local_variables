@@ -1,0 +1,2 @@
+#!/bin/bash
+set | sort; declare -f | sort
