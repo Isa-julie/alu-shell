@@ -2,14 +2,17 @@
 # This script displays hours and minutes
 
 hour=0
-minute=1
-
-# Loop through hours from 0 to 12
 while [ $hour -le 12 ]; do
+    echo "Hour: $hour" # Display the current hour
+
+    # Initialize minute variable
+    minute=1
+
     # Loop through minutes from 1 to 59
     while [ $minute -lt 60 ]; do
-        echo "$hour:$minute"
+        echo "$minute" # Display the current minute
         minute=$((minute + 1)) # Increment minute
     done
+
     hour=$((hour + 1)) # Increment hour
-done 
+done
