@@ -4,7 +4,7 @@
 # Loop through all non-hidden files in the current directory
 for file in *; do
     # Check if it's a file and contains a dash
-    if [[ -f "$file" && "$file" == *-* ]]; then
+     if [[ -f "$file" ]] && [[ "$file" == *-* ]]; then
         # Extract and display the part after the first dash
         echo "${file#*-}"
     fi
