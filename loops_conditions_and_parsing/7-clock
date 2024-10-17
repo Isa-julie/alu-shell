@@ -12,5 +12,4 @@ while [ $hour -le 12 ]; do
         minute=$((minute + 1)) # Increment minute
     done
     hour=$((hour + 1)) # Increment hour
-    minute=1 # Reset minute to 1 for the next hour
 done 
