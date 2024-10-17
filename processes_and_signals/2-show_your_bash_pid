@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Display processes containing the word "bash" without using grep
+ps aux | awk '/bash/ {print}'
