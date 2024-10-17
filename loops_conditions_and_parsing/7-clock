@@ -13,4 +13,4 @@ while [ $hour -le 12 ]; do
     done
     hour=$((hour + 1)) # Increment hour
     minute=1 # Reset minute to 1 for the next hour
-done | head -n 70 # Display only the first 70 lines
+done 
