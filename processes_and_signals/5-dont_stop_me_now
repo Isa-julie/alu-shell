@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Define the process name to search for
+PROCESS_NAME="4-to_infinity_and_beyond"
+
+# Find the PID of the process
+pid=$(pgrep -f "$PROCESS_NAME")
+
+# Check if the process is running
+if [ -z "$pid" ]; then
+    echo "No process named '$PROCESS_NAME' is currently running."
+    exit 1
+fi
+
+# Display the PID and ask for confirmation to kill it
+echo "Process '$PROCESS_NAME' found with PID: $pid"
+read -p "Do you want to kill this process? (Y/N): " action
+
+if [[ "$action" =~ ^[Yy]$ ]]; then
+    kill "$pid"
+    echo "Process '$PROCESS_NAME' with PID: $pid has been killed."
+else
+ echo "Process termination canceled."
+fi
