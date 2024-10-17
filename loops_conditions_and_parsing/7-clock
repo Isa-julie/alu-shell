@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# This script displays hours and minutes for 12 hours and 59 minutes
+# This script displays hours and minutes
 
 hour=0
-while [ $hour -le 12 ]
-do
-	ech "Hour: $hour"
-    minute=1
-    while [ $minute -le 59 ]
-    do
-        echo "$hour:$minute"
-        minute=$((minute+1))
-    done
-    hour=$((hour+1))
-done | head -n 70
+minute=1
 
+# Loop through hours from 0 to 12
+while [ $hour -le 12 ]; do
+    # Loop through minutes from 1 to 59
+    while [ $minute -lt 60 ]; do
+        echo "$hour:$minute"
+        minute=$((minute + 1)) # Increment minute
+    done
+    hour=$((hour + 1)) # Increment hour
+    minute=1 # Reset minute to 1 for the next hour
+done | head -n 70 # Display only the first 70 lines
