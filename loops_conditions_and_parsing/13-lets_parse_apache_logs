@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Define the log file path
-LOG_FILE="apache-access.log"
+#Bash script that groups visitors by IP and HTTP status code, and displays this data`:q
 
-# Use awk to extract the IP address and HTTP status code
-awk '{print $1, $9}' "$LOG_FILE"
+awk '{ print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
