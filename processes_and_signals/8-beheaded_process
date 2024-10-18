@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Define the process name to kill
+PROCESS_NAME="7-highlander"
+
+# Find the PIDs of the process
+pids=$(pgrep -f "$PROCESS_NAME")
+
+# Check if any PIDs were found
+if [ -z "$pids" ]; then
+    echo "No process named '$PROCESS_NAME' is currently running."
+    exit 1
+fi
+
+# Kill each found PID
+for pid in $pids; do
+    kill "$pid"
+    if [ $? -eq 0 ]; then
+        echo "Killed process '$PROCESS_NAME' with PID: $pid"
+    else
+        echo "Failed to kill process '$PROCESS_NAME' with PID: $pid"
+    fi
+done
