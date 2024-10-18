@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#bash script that kill process in another terminal
-
-pkill -SIGKILL -f "./7-highlander"
-Tresor Nkurunziza
-10:05
-#!/usr/bin/env bash
 #Write to /tmp/my_process indefinitely
 
 sleep() {

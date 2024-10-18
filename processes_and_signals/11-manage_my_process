@@ -4,7 +4,7 @@
 PROGRAM='manage_my_process'
 RELPATH="${0%/*}/${PROGRAM}"
 PIDFILE="${PIDFILE:-/var/run/my_process.pid}"
-declare -A MESSAGES=( 
+declare -A MESSAGES=(
   ['start']='started'
   ['stop']='stopped'
   ['restart']='restarted'
@@ -28,4 +28,10 @@ restart() {
   start
 }
 
-if (( $# == 1 )) && [[ -v "MESSAGES[$1]" ]
+if (( $# == 1 )) && [[ -v "MESSAGES[$1]" ]]
+then
+  "$1" && printf '%s %s\n' "${PROGRAM}" "${MESSAGES[$1]}"
+else
+  printf 'Usage: %s {start|stop|restart}\n' "${PROGRAM}"
+  exit 1
+fi
