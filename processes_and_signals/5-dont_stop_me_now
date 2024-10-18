@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
-# Define the process name to search for
-PROCESS_NAME="4-to_infinity_and_beyond"
+#use case statement
 
-for pid in /proc/[0-9]*; do
-    # Check if the 'comm' file exists for the process
-    if [[ -r "$pid/comm" ]]; then
-        # Read the process name
-        process_name=$(<"$pid/comm")
-        # Check if the process name matches PROCESS_NAME
-        if [[ $process_name == "$PROCESS_NAME" ]]; then
-            # Display the PID and ask for confirmation to kill it
-            echo "Process '$PROCESS_NAME' found with PID: ${pid##*/}"
-            read -p "Do you want to kill this process? (Y/N): " action
-            
-            if [[ "$action" =~ ^[Yy]$ ]]; then
-                kill "${pid##*/}"
-                echo "Process '$4-to_infinity_and_beyond' with PID: ${pid##*/} has been killed."
-            else
-                echo "Process termination canceled."
-            fi
-            exit 0  # Exit after handling the first found instance
-        fi
-    fi
+count=1
+while [ $count -le 20 ]; do
+case $count in 
+4)
+echo "$count"
+echo "bad luck from China"
+;;
+9)
+echo "$count"
+echo "bad luck from Japan"
+;;
+17)
+echo "$count"
+echo "bad luck from Italy"
+;;
+*)
+echo "$count"
+;;
+esac
+count=$((count+1))
 done
-
-echo "No process named '$PROCESS_NAME' is currently running."
