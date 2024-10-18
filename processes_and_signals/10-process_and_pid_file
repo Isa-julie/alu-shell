@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Define the PID file location
+PID_FILE="/var/run/myscript.pid"
+
+# Function to handle SIGTERM and SIGQUIT
+cleanup() {
+    echo "Terminating..."
+    rm -f "$PID_FILE"  # Delete the PID file
+    exit 0
+}
+
+# Function to handle SIGTERM
+handle_sigterm() {
+    echo "I hate the kill command"
+    cleanup
+}
+
+# Function to handle SIGINT
+handle_sigint() {
+    echo "Y U no love me?!"
+}
+
+# Create the PID file with the current script's PID
+echo $$ > "$PID_FILE"
+
+# Trap signals
+trap 'handle_sigterm' SIGTERM
+trap 'handle_sigint' SIGINT
+trap 'cleanup' SIGQUIT
+
+# Infinite loop to display the message
+while true; do
+    echo "To infinity and beyond"
+    sleep 2  # Pause for 2 seconds
+done
